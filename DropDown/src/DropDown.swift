@@ -428,6 +428,8 @@ public final class DropDown: UIView {
 	/// The action to execute when the user cancels/hides the drop down.
 	public var cancelAction: Closure?
 
+    public var didHideAction: Closure?
+    
 	/// The dismiss mode of the drop down. Default is `OnTap`.
 	public var dismissMode = DismissMode.onTap {
 		willSet {
@@ -923,6 +925,7 @@ extension DropDown {
 
 				self.isHidden = true
 				self.removeFromSuperview()
+                self.didHideAction?()
 				UIAccessibility.post(notification: .screenChanged, argument: nil)
 		})
 	}
