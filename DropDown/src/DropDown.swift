@@ -99,7 +99,15 @@ public final class DropDown: UIView {
         imgv.frame = CGRect(x: 0, y: -10, width: 15, height: 10)
         return imgv
     }()
-
+    
+    public var allowsSelection: Bool {
+        get {
+            return tableView.allowsSelection
+        }
+        set {
+            tableView.allowsSelection = newValue
+        }
+    }
 
 	/// The view to which the drop down will displayed onto.
 	public weak var anchorView: AnchorView? {
